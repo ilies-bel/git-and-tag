@@ -1,6 +1,7 @@
-import {axiosInstance} from "./AxiosInstance.tsx";
+import {axiosInstance} from "../AxiosInstance.tsx";
 import {Link, useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
+import CommitCalendar from "./CommitCalendar.tsx";
 
 const fetchRepoDetail = async (owner, repoName) => {
     const response = await axiosInstance.get(`/repos/${owner}/${repoName}`);
@@ -45,6 +46,9 @@ const RepoDetail = () => {
         <div>
             <h1>{repo.name}</h1>
             <p>Description: {repo.description}</p>
+
+            <CommitCalendar commitEvents={commitEvents} currentUser={currentUser}/>
+
             <p>Stars: {repo.stargazers_count}</p>
             <p>Forks: {repo.forks_count}</p>
             <p>Language: {repo.language}</p>
