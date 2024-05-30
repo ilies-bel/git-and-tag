@@ -38,7 +38,7 @@ const RepoDetail = () => {
     }
 
     // Filter events to show only the current user's activity
-    const currentUser = 'ilies-bel'; // Replace with your GitHub username
+    const currentUser = Config.repoUser;
     const commitEvents = events.filter(
         (event) => event.type === 'PushEvent' && event.actor.login === currentUser
     );
