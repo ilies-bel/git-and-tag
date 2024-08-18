@@ -38,8 +38,9 @@ const RepoDetail = () => {
 
     // Filter events to show only the current user's activity
     const currentUser = 'ilies-bel'; // Replace with your GitHub username
-    const userEvents = events.filter(event => event.actor.login === currentUser);
-
+    const commitEvents = events.filter(
+        (event) => event.type === 'PushEvent' && event.actor.login === currentUser
+    );
     return (
         <div>
             <h1>{repo.name}</h1>
@@ -55,8 +56,8 @@ const RepoDetail = () => {
 
             <h2>Activity History for {currentUser}</h2>
             <ul>
-                {userEvents.length > 0 ? (
-                    userEvents.map((event) => (
+                {commitEvents.length > 0 ? (
+                    commitEvents.map((event) => (
                         <li key={event.id}>
                             <p>
                                 <strong>Event Type:</strong> {event.type}
