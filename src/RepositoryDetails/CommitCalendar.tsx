@@ -2,7 +2,6 @@ import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 
 
-// Helper function to transform commit data into a calendar-friendly format
 const transformCommitData = (events, currentUser) => {
     const commitData = {};
 
@@ -29,27 +28,33 @@ export default  function CommitCalendar( { currentUser, commitEvents }) {
     const today = new Date();
 
 
+
     return (
-        <div>
+        <div >
             <h2>Commit History Calendar</h2>
-    <CalendarHeatmap
-    startDate={new Date(today.getFullYear(), today.getMonth() - 11, today.getDate())}
-    endDate={today}
-    values={transformedData}
-    classForValue={(value) => {
-        if (!value) {
-            return 'color-empty';
-        }
-        return `color-gitlab-${Math.min(value.count, 4)}`;
-    }}
-    showWeekdayLabels={true}
-    tooltipDataAttrs={value => {
-        return {
-            'data-tip': value ? `${value.count} commits on ${value.date}` : 'No commits',
-        };
-    }}
-    />
-    </div>
+            <div style={{width : "46rem"}}>
+
+                <CalendarHeatmap
+
+                startDate={new Date(today.getFullYear(), today.getMonth() - 11, today.getDate())}
+                endDate={today}
+                values={transformedData}
+                classForValue={(value) => {
+                    if (!value) {
+                        return 'color-empty';
+                    }
+                    return `color-gitlab-${Math.min(value.count, 4)}`;
+                }}
+                showWeekdayLabels={true}
+                tooltipDataAttrs={value => {
+                    return {
+                        'data-tip': value ? `${value.count} commits on ${value.date}` : 'No commits',
+                    };
+                }}
+                />
+            </div>
+
+      </div>
 );
-};
+}
 

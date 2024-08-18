@@ -27,7 +27,6 @@ const RepoDetail = () => {
         queryFn: () => fetchRepoEvents(owner, repoName),
     });
 
-    console.log(events)
 
     if (isLoading) {
         return <p>Loading...</p>;
