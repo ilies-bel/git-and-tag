@@ -1,9 +1,9 @@
 import {RepoList} from "./RepoList.tsx";
 import {Route, Routes} from "react-router-dom";
-import RepoDetail from "./RepositoryDetails.tsx";
+import RepoDetail from "./RepositoryDetails/RepositoryDetails.tsx";
 
 
-function App() {
+export default function App() {
     return (
         <Routes>
             <Route path="/" element={<RepoList />} />
@@ -12,4 +12,3 @@ function App() {
     );
 }
 
-export default App;
